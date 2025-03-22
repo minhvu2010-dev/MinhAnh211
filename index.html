@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tỏ Tình Lại Minh Anh ❤️</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: pink;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            display: none;
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .password-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+        input {
+            padding: 10px;
+            font-size: 18px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px;
+            font-size: 18px;
+            margin-left: 5px;
+            cursor: pointer;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: darkred;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        .btn {
+            font-size: 20px;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+        .yes {
+            background-color: red;
+            color: white;
+        }
+        .no {
+            background-color: gray;
+            color: white;
+            position: absolute;
+        }
+        .heart {
+            position: fixed;
+            color: red;
+            font-size: 20px;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            from {
+                transform: translateY(-10vh);
+            }
+            to {
+                transform: translateY(100vh);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Trang Nhập Mật Khẩu -->
+    <div class="password-container" id="passwordPage">
+        <h2>🔒 Nhập Mật Khẩu Để Vào</h2>
+        <input type="password" id="password" placeholder="Nhập mật khẩu...">
+        <button onclick="checkPassword()">OK ✅</button>
+    </div>
+
+    <!-- Trang Tỏ Tình (Ẩn Ban Đầu) -->
+    <div class="container" id="lovePage">
+        <h1>Minh Anh  có đồng ý  Quay Lại Với anh không? 🥰</h1>
+        <div class="buttons">
+            <button class="btn yes" onclick="acceptLove()">Có ❤️</button>
+            <button class="btn no" id="noBtn" onclick="trickNo()" onmouseover="moveNoButton()">Không 💔</button>
+        </div>
+    </div>
+
+    <script>
+        function checkPassword() {
+            let password = document.getElementById("password").value;
+            if (password === "15012010") {
+                document.getElementById("passwordPage").style.display = "none";
+                document.getElementById("lovePage").style.display = "block";
+                setInterval(createHeart, 300);
+            } else {
+                alert("❌ Sai mật khẩu! Hãy thử lại.");
+            }
+        }
+
+        function acceptLove() {
+            alert("Yêu em nhiều lắm Á Mih Anh ! ❤️🥰");
+        }
+
+        function trickNo() {
+            alert("Bấm Không cũng là Đồng Ý thôi! 😘");
+        }
+
+        function moveNoButton() {
+            let x = Math.random() * window.innerWidth;
+            let y = Math.random() * window.innerHeight;
+            document.getElementById("noBtn").style.left = `${x}px`;
+            document.getElementById("noBtn").style.top = `${y}px`;
+        }
+
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.innerHTML = "❤️";
+            heart.classList.add("heart");
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = Math.random() * 3 + 2 + "s";
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 5000);
+        }
+    </script>
+
+</body>
+</html>
